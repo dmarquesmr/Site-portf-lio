@@ -1,358 +1,213 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url('../img_site/img_background3.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+/* ======== CONFIGURAÇÕES GLOBAIS ======== */
+html {
+    background-color: #000;
+    /* Fallback caso o vídeo não carregue */
 }
 
-body::before {
-    content: '';
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 100%;
+}
+
+body {
+    background-color: transparent;
+}
+
+/* ======== FUNDO DE VÍDEO ======== */
+.video-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: -1;
+    overflow: hidden;
+    z-index: -2;
 }
 
-.container-body {
-    margin: 0 auto;
-    width: 900px;
-    text-align: center;
-    justify-content: center;
-    display: grid;
-}
-h1 {
-    color: aquamarine;
-    padding-top: 30px;
-    position: relative;
-    margin: 0 auto;
-}
-h2  {
-    color: azure;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 0;
-}
-h3{
-    padding-bottom: 2px;
-    color: azure;
-    
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-button {
-    color: rgb(0, 0, 0);
-    background-color: aquamarine;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-    width:100px;
-    margin: 0 auto;
-    
-    
-
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
 }
 
-button:hover {
-    background-color: rgb(255, 255, 255);
-    transform: scale(1.0);
-    
-    
-    
-}
-
-.logo-site-index {
-     max-width: 500px;
-     margin-bottom: 60px;
-     transition: all 0.5s ease;
-     border: none;
-     display: block;
- 
- 
-}
- 
-
-.logo-site-index:hover {
-    transform: scale(1.05);
-    background-color: transparent;
-    
-   
-}
-
-nav ul {
+/* ======== LAYOUT DE DESKTOP (TELA GRANDE) ======== */
+header {
+    width: 100%;
+    padding: 20px 5%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
     display: flex;
-    gap: 70px;
-    background-color:transparent;
-    max-width: 120%;
-    padding: 20px;
-    border-radius: 10px;
-    list-style: none;
-    justify-content: center;
-    margin: 0 auto;
-    margin-right: -90px
-   
-    
-    
-    
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    order: 1;
+    position: relative;
+        /* <--- ADICIONE ESTA LINHA */
+        left: 30px;
+        top: 25px;
     
 }
-nav ul a {
+
+.nav {
+    order: 2;
+}
+
+.site-logo img {
+    max-width: 250px;
+    height: auto;
+    display: block;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 45px;
+}
+
+.nav ul li a {
     color: aquamarine;
-    cursor: pointer;
     text-decoration: none;
     font-weight: bold;
-    
-   
-
+    padding: 8px;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-nav ul a:hover {
+.nav ul li a:hover {
     transform: scale(1.1);
-    text-decoration: none;
-    transition: all 0.3s ease;
     color: azure;
-    
 }
 
-nav ul::after {
-    content:'';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    
-
+.nav ul li a strong {
+    font-weight: 900;
+    color: white;
 }
 
-
-
-.container-logo {
-    justify-items: center;
-    padding-top: 100px;
-    color: azure;
-    font-size: 1.0rem;
-    max-width: 200px;
-    margin: 0 auto;
-    
-  
-}
-.container-logo button {
-    margin-left: 20px;
-    font-size: 0.8rem;
-    padding: 10px;
+body>section:not(.video-background) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 120px 20px 80px;
+    /* Padding ajustado para dar espaço ao header e footer */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
 }
 
-.container-formulario {
-    color: aquamarine;
-    display: grid;
-    max-width: 500px;
+.landing-text {
+    max-width: 100%;
+    width: 700px;
+    height: auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
     width: 100%;
-    background-color: rgb(0, 0, 0);
-    padding: 30px;
-    margin: 20px auto;
-    place-items: start;
-    gap: 15px;
-    text-align: left;
- 
- 
- 
-}
-
-.container-formulario input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-}
-  
-  
-
-.container-formulario ul {
-    margin: 0;
-    width: 100%;
-    text-align: left;
-    list-style: none;
-    padding: 0;
-    display: grid;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.container-formulario label {
-    display: block;
-    margin-bottom: 5px;
-    color: aquamarine;
-
-}
-
-.container-formulario textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 10px;
-    border-radius: 10px;
-    resize: vertical;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-     font-family: Trebuchet MS;
+    z-index: 10;
 }
 
 .rodape {
-    color: azure;
-    font-size: 0.8rem;
-    padding-bottom:30px;
-    padding-top: 70px;
-    margin-top: 40px;
-    
-    
+    color: rgba(240, 255, 255, 0.7);
+    font-size: 12px;
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-@media screen and (max-width: 768px) {
-    body {
-        display: flex;
+.rodape strong {
+    font-weight: normal;
+    color: rgba(240, 255, 255, 0.9);
+}
+
+/* ================================================================
+📱 AJUSTES PARA MOBILE (TELAS MENORES QUE 768px) 📱
+================================================================
+*/
+@media (max-width: 768px) {
+
+    /* Cabeçalho empilhado: logo em cima, menu embaixo */
+    header {
         flex-direction: column;
-        align-items: center;
+        /* Muda a direção do flex para vertical */
+        gap: 20px;
+        /* Adiciona um espaço entre a logo e o menu */
+        padding: 0px 0;
+
     }
 
-    .container-body {
-        width: 95%;
+    /* Reseta a ordem, pois em coluna ela não é mais necessária */
+    .site-logo,
+    .nav {
+        order: initial;
+    }
+
+    .site-logo img {
+        max-width: 200px;
+        margin-top:100px;
         margin: 0 auto;
-        display: flex;
-        align-items: center;
-        text-align: center;
+        margin-right: 130px;
+        /* Logo um pouco menor no mobile */
     }
 
-    h1 {
-        font-size: 2rem;
-        padding-top: 20px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    h3 {
-        font-size: 1.1rem;
-        padding-bottom: 10px;
-        margin-left: 20px;
-    }
-
-    button {
-        width: 90px;
-        padding: 12px;
-        font-size: 1rem;
-        margin: 0 auto;
-        margin-top:40px;
-    }
-
-    .logo-site-index {
-        max-width: 250px;
-        margin: 0 auto;
-        padding-top: 30px;
-        margin-bottom: 30px;
+    /* Menu de navegação se torna vertical */
+    .nav ul {
         
-    }
-
-    nav ul {
-        
+        /* Links empilhados */
         align-items: center;
+        /* Centraliza os links */
         gap: 15px;
-        padding: 15px;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        margin-right: 0;
-        margin-left: 20px;
-    }
-
-    nav ul a {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 8px 0;
-        font-size: 1rem;
-    }
-
-    nav ul a:hover {
-        transform: scale(1.05);
-    }
-
-    .container-logo {
-        max-width: 180px;
-        padding-top: 50px;
-        margin: 0 auto;
-        margin-right: 120px;
-    }
-
-    .container-logo button {
-        margin-left: 0;
-        font-size: 0.9rem;
-        padding: 8px;
-        width: 100px;
-    }
-
-    .container-formulario {
-        max-width: 95%;
-        width: 80%;
-        padding: 20px;
-        place-items: center;
-        gap: 10px;
-        text-align: center;
+        margin-top: 100px;
         
     }
 
-    .container-formulario input {
-        width: calc(100% - 20px);
-        padding: 10px;
-        
-        
-    }
-
-    .container-formulario ul {
+    /* Imagem de texto se ajusta à largura da tela */
+    .landing-text {
         width: 100%;
-        gap: 8px;
-    }
-
-    .container-formulario label {
-        width: 100%;
-        margin-bottom: 3px;
-    }
-
-    .container-formulario textarea {
-        width: calc(100% - 20px);
-        min-height: 80px;
-        padding: 10px;
-        margin: 0 auto;
+        /* Ocupa 90% da largura da tela, em vez de um valor fixo */
     }
 
     .rodape {
-        font-size: 0.7rem;
-        padding-bottom: 15px;
-        padding-top: 30px;
-        margin-top: 20px;
+        font-size: 10px;
+        /* Fonte do rodapé um pouco menor */
+        position: relative;
+        margin-top:-150px;
+        margin-bottom: 0;
+        /* Remove o posicionamento fixo dentro da seção */
+    }
+
+    /* Ajusta a seção principal para conter o rodapé */
+    body>section:not(.video-background) {
+        padding-bottom: 0;
+    }
+
+    footer {
+        position: relative;
+        /* O rodapé não fica mais fixo na tela */
+        padding-bottom: 0;
+        margin-top:40px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
