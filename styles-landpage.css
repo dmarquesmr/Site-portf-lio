@@ -1,0 +1,213 @@
+/* ======== CONFIGURAÇÕES GLOBAIS ======== */
+html {
+    background-color: #000;
+    /* Fallback caso o vídeo não carregue */
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 100%;
+}
+
+body {
+    background-color: transparent;
+}
+
+/* ======== FUNDO DE VÍDEO ======== */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+/* ======== LAYOUT DE DESKTOP (TELA GRANDE) ======== */
+header {
+    width: 100%;
+    padding: 20px 5%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    order: 1;
+    position: relative;
+        /* <--- ADICIONE ESTA LINHA */
+        left: 30px;
+        top: 25px;
+    
+}
+
+.nav {
+    order: 2;
+}
+
+.site-logo img {
+    max-width: 250px;
+    height: auto;
+    display: block;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 45px;
+}
+
+.nav ul li a {
+    color: aquamarine;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav ul li a:hover {
+    transform: scale(1.1);
+    color: azure;
+}
+
+.nav ul li a strong {
+    font-weight: 900;
+    color: white;
+}
+
+body>section:not(.video-background) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 120px 20px 80px;
+    /* Padding ajustado para dar espaço ao header e footer */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
+.landing-text {
+    max-width: 100%;
+    width: 700px;
+    height: auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.rodape {
+    color: rgba(240, 255, 255, 0.7);
+    font-size: 12px;
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.rodape strong {
+    font-weight: normal;
+    color: rgba(240, 255, 255, 0.9);
+}
+
+/* ================================================================
+📱 AJUSTES PARA MOBILE (TELAS MENORES QUE 768px) 📱
+================================================================
+*/
+@media (max-width: 768px) {
+
+    /* Cabeçalho empilhado: logo em cima, menu embaixo */
+    header {
+        flex-direction: column;
+        /* Muda a direção do flex para vertical */
+        gap: 20px;
+        /* Adiciona um espaço entre a logo e o menu */
+        padding: 0px 0;
+
+    }
+
+    /* Reseta a ordem, pois em coluna ela não é mais necessária */
+    .site-logo,
+    .nav {
+        order: initial;
+    }
+
+    .site-logo img {
+        max-width: 200px;
+        margin-top:100px;
+        margin: 0 auto;
+        margin-right: 130px;
+        /* Logo um pouco menor no mobile */
+    }
+
+    /* Menu de navegação se torna vertical */
+    .nav ul {
+        
+        /* Links empilhados */
+        align-items: center;
+        /* Centraliza os links */
+        gap: 15px;
+        margin-top: 100px;
+        
+    }
+
+    /* Imagem de texto se ajusta à largura da tela */
+    .landing-text {
+        width: 100%;
+        /* Ocupa 90% da largura da tela, em vez de um valor fixo */
+    }
+
+    .rodape {
+        font-size: 10px;
+        /* Fonte do rodapé um pouco menor */
+        position: relative;
+        margin-top:-150px;
+        margin-bottom: 0;
+        /* Remove o posicionamento fixo dentro da seção */
+    }
+
+    /* Ajusta a seção principal para conter o rodapé */
+    body>section:not(.video-background) {
+        padding-bottom: 0;
+    }
+
+    footer {
+        position: relative;
+        /* O rodapé não fica mais fixo na tela */
+        padding-bottom: 0;
+        margin-top:40px;
+    }
+}
