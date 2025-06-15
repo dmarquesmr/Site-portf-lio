@@ -1,0 +1,876 @@
+/* ======== CONFIGURAÇÕES GLOBAIS LANDINGPAGE ======== */
+html {
+    background-color: #000;
+    margin-bottom: 0;
+    /* Fallback caso o vídeo não carregue */
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+body {
+    background-color: transparent;
+    
+}
+
+/* ======== FUNDO DE VÍDEO ======== */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    
+
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+/* ======== LAYOUT DE DESKTOP (TELA GRANDE) ======== */
+header {
+    width: 100%;
+    padding: 20px 5%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.site-logo {
+    order: 1;
+    position: relative;
+        /* <--- ADICIONE ESTA LINHA */
+        left: 30px;
+        top: 25px;
+    
+}
+
+.nav {
+    order: 2;
+}
+
+.site-logo img {
+    max-width: 250px;
+    height: auto;
+    display: block;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 45px;
+}
+
+.nav ul li a {
+    color: aquamarine;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav ul li a:hover {
+    transform: scale(1.1);
+    color: azure;
+}
+
+.nav ul li a strong {
+    font-weight: 900;
+    color: white;
+}
+
+body>section:not(.video-background) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 120px 20px 80px;
+    /* Padding ajustado para dar espaço ao header e footer */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    
+}
+
+.landing-text {
+    max-width: 100%;
+    width: 700px;
+    height: auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.rodape-land {
+    color: rgba(240, 255, 255, 0.7);
+    font-size: 13px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: -50px;
+    margin-bottom: 0;
+}
+
+
+
+
+/* ================================================================
+📱 AJUSTES PARA MOBILE (TELAS MENORES QUE 768px) 📱
+================================================================
+*/
+@media (max-width: 768px) {
+
+    /* Cabeçalho empilhado: logo em cima, menu embaixo */
+    header {
+        flex-direction: column;
+        /* Muda a direção do flex para vertical */
+        gap: 20px;
+        /* Adiciona um espaço entre a logo e o menu */
+        padding: 0px 0;
+
+    }
+
+    /* Reseta a ordem, pois em coluna ela não é mais necessária */
+    .site-logo,
+    .nav {
+        order: initial;
+    }
+
+    .site-logo img {
+        max-width: 200px;
+        margin-top:100px;
+        margin: 0 auto;
+        margin-right: 130px;
+        /* Logo um pouco menor no mobile */
+    }
+
+    /* Menu de navegação se torna vertical */
+    .nav ul {
+        
+        /* Links empilhados */
+        align-items: center;
+        /* Centraliza os links */
+        gap: 15px;
+        margin-top: 100px;
+        margin-left: -10px;
+        
+    }
+
+    /* Imagem de texto se ajusta à largura da tela */
+    .landing-text {
+        width: 100%;
+        /* Ocupa 90% da largura da tela, em vez de um valor fixo */
+    }
+
+    .rodape-land {
+        font-size: 0.6rem;
+        /* Fonte do rodapé um pouco menor */
+        position: relative;
+        padding:10px;
+        margin-top:-150px;
+        margin-bottom: 0;
+        padding-top:40px;
+        /* Remove o posicionamento fixo dentro da seção */
+    }
+
+    /* Ajusta a seção principal para conter o rodapé */
+    body>section:not(.video-background) {
+        padding-bottom: 0;
+    }
+
+    footer {
+        position: relative;
+        /* O rodapé não fica mais fixo na tela */
+        padding-bottom: 0;
+        margin-top:40px;
+        
+    }
+}
+
+/* Página SOBRE */
+
+/* --- ESTILOS GERAIS E BACKGROUND --- */
+body {
+    padding-bottom: 70px;
+    
+}
+body.background-sobre-contato {
+    margin: 0;
+    padding: 0;
+    background-image: url('../img_site/img_background3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: azure;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body.background-sobre-contato::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+/* --- CABEÇALHO E NAVEGAÇÃO --- */
+
+header.nav-sobre {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: flex-end;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top:36px;
+    
+    
+    
+}
+
+header.nav-sobre nav ul {
+    
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+    
+}
+
+header.nav-sobre nav ul li a {
+    color: aquamarine;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 5px 12px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    margin-right: 15px;
+    
+    
+}
+
+header.nav-sobre nav ul li a:hover {
+    transform: scale(1.1);
+    color: azure;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+/* --- CONTEÚDO PRINCIPAL "SOBRE" --- */
+
+.sobre-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.container-foto-perfil {
+    max-width: 270px;
+    border: 3px solid azure;
+    border-radius: 50%;
+    margin: 40px auto;
+    display: block;
+    background-color: black;
+    opacity: 60%;
+}
+
+.logo-site-sobre {
+    max-width: 300px;
+    margin-top: 10px;
+    margin-bottom:40px;
+    transition: all 0.3s ease;
+}
+
+.logo-site-sobre:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+
+
+/* --- SEÇÃO INFERIOR COM DUAS COLUNAS --- */
+
+
+.sobre-container1,
+.sobre-container2,
+.sobre-container3 {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    
+    box-sizing: border-box;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* fundo preto com transparência */
+    color: white;
+    /* cor do texto */
+    border-radius: 25px;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+    /* brilho sutil */
+    backdrop-filter: blur(4px);
+    /* efeito vidro fosco */
+}
+
+
+
+
+.logo-sobre-final {
+    max-width: 250px;
+    padding-bottom: 25px;
+    display: block;
+    margin: 60px auto 0 auto;
+}
+
+/* --- RODAPÉ --- */
+
+footer {
+    width: 100%;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: azure;
+    text-align: center;
+    font-size: 13px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    margin-bottom: 0;
+}
+
+
+
+body {
+    padding-bottom: 70px;
+    
+    /* A altura do seu rodapé + um respiro */
+}
+
+
+@media screen and (max-width: 768px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+
+   /* Dentro de @media screen and (max-width: 768px) { ... } */
+
+   /* 1. CONTROLE O HEADER NO MOBILE */
+   header.nav-sobre {
+       flex-direction: column;
+       /* Empilha os itens verticalmente */
+       justify-content: center;
+       /* Centraliza o bloco de navegação */
+       align-items: center;
+       /* Garante o alinhamento central */
+       gap: 20px;
+       /* Adiciona um espaço (se houver mais de um item) */
+       padding: 20px 0;
+       /* Ajusta o espaçamento para a vista mobile */
+       margin-top: 20px;
+       /* Reduz a margem superior no mobile */
+   }
+
+   /* 2. ORGANIZE A LISTA DE LINKS */
+   header.nav-sobre nav ul {
+       /* As regras de 'margin' que você tinha estavam em conflito. */
+       /* Este é um jeito mais limpo e direto: */
+       width: 100%;
+       
+       /* Garante que os links fiquem em coluna */
+       align-items: center;
+       /* Centraliza os links na coluna */
+       gap: 20px;
+       /* Espaçamento vertical entre os links */
+       padding: 0;
+       margin: 0;
+   }
+
+   /* 3. GARANTA QUE OS ITENS DA LISTA OCUPEM ESPAÇO */
+   header.nav-sobre nav ul li {
+       width: 100%;
+       text-align: center;
+   }
+
+   header.nav-sobre nav ul li a {
+       display: block;
+       /* Faz o link ocupar toda a largura do 'li' */
+       padding: 10px 0;
+       margin-right: 0;
+       /* Remove a margem da direita, desnecessária aqui */
+   }
+
+   /* O restante das suas regras para mobile... */
+
+    .container-bottom {
+        
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .sobre-container2,
+    .sobre-container3,.sobre-container1 {
+         width: 100%;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+       
+    
+
+    .sobre-mim {
+        font-size: 1.8rem;
+    }
+
+    .container-logo-sobre {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    .logo-site-sobre {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .logo-sobre-final {
+        max-width: 200px;
+    }
+
+    .container-foto-perfil {
+        max-width: 200px;
+        margin-top: 140px;
+        margin-bottom: 50px;
+    }
+
+        footer.rodape-sobre {
+            position: relative;
+            /* O rodapé não fica mais fixo na tela */
+            padding-bottom: 0;
+            margin-top: 40px;
+            font-size: 1px;
+    
+        }
+    
+}
+
+/* ======== PAGINA CONTATO ======== */
+/* --- ESTILOS GERAIS E BACKGROUND --- */
+html {
+    background-color: transparent;
+    
+    
+}
+
+body.background-sobre-contato {
+    margin: 0;
+    padding: 0;
+    background-image: url('../img_site/img_background3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: azure;
+    /* Adicionado para o rodapé fixo funcionar corretamente */
+    padding-bottom: 80px;
+}
+
+body.background-sobre-contato::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    
+}
+
+/* --- CABEÇALHO E NAVEGAÇÃO --- */
+
+
+.contato-header {
+    width: 100%;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin-top:50px;
+    
+}
+
+.logo-site-contato {
+    max-width: 250px;
+    /* Tamanho mais equilibrado */
+    transition: transform 0.3s ease;
+}
+
+.logo-site-contato:hover {
+    transform: scale(1.05);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul a {
+    color: aquamarine;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul a:hover {
+    color: azure;
+    background-color:transparent;
+    transform: scale(1.1);
+}
+
+/* --- CONTEÚDO PRINCIPAL E FORMULÁRIO --- */
+
+.main-content {
+    text-align: center;
+    margin-top: 50px;
+    padding-top:210px;
+    padding-bottom: 90px;
+    margin-bottom: 0;
+}
+
+.main-content h3 {
+    font-size: 1.1rem;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+.logo-site-contato {
+    max-width: 25%;
+    margin-right: 10px;
+}
+
+.container-formulario {
+    max-width: 500px;
+    margin: 0 auto;
+    /* Centraliza o formulário */
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Fundo sutil para destacar */
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+        margin-top: 50px;
+    
+}
+
+.form-group {
+    width: 100%;
+    text-align: left;
+    /* Alinha o conteúdo do grupo à esquerda */
+    margin-bottom: 15px;
+    /* Espaçamento entre os campos */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: aquamarine;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    /* Garante que o padding não altere a largura */
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* Herda a fonte do body */
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+button[type="submit"] {
+    color: rgb(0, 0, 0);
+    background-color: aquamarine;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    /* Botão com largura total */
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(255, 255, 255);
+    transform: scale(1.02);
+    /* Efeito de hover mais sutil */
+}
+
+/* --- RODAPÉ FIXO --- */
+
+footer.rodape-interno {
+    width: 100%;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: azure;
+    text-align: center;
+    font-size: 0.8rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-body {
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        
+    }
+
+    h1 {
+        font-size: 2rem;
+        padding-top: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .main-content h3 {
+        font-size: 1.0rem;
+        padding-top: 10px;
+        margin-left: 10px;
+        padding-right: 35px;
+    }
+
+    button {
+        width: 90px;
+        padding: 12px;
+        font-size: 1rem;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+
+    .contato-header, .logo-site-contato {
+        max-width: 250px;
+        margin: 0 auto;
+        padding-top: 30px;
+        margin-bottom: 30px;
+        flex-direction: column;
+        margin-left:50px;
+        
+
+    }
+
+    nav ul {
+
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        margin-right: 0;
+        margin-left: 20px;
+    }
+
+    
+
+ 
+
+    .container-logo {
+        max-width: 80px;
+        padding-top: 50px;
+        margin: 0 auto;
+        margin-right: 120px;
+        
+    }
+
+    .main-content,.container-logo button {
+        margin-left: 0;
+        font-size: 0.7rem;
+        padding: 4px;
+        
+    }
+
+    .main-content, .container-formulario {
+        max-width: 100%;
+        width: 90%;
+        padding: 20px;
+        place-items: center;
+        gap: 10px;
+        text-align: center;
+        justify-content: center;
+        padding-right: 12px;
+        margin-top:70px;
+        
+
+    }
+
+    .container-formulario input {
+        width: calc(100% - 20px);
+        padding: 10px;
+
+
+    }
+
+    .nav-contato {
+        margin-left:60px;
+        gap:10px;
+        margin-bottom: 30px;
+        padding-bottom:20px;
+        font-size: 12px;
+        display:flex;
+        list-style: none;
+    }
+
+    .container-formulario ul {
+        width: 100%;
+        gap: 8px;
+    }
+
+.button-submit{
+     max-width: 80%;
+     margin:0 auto;
+     padding-left:40px;
+     margin-right: 15px;
+}
+
+    .container-formulario label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .container-formulario textarea {
+        width: calc(100% - 20px);
+        min-height: 80px;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .rodape {
+        font-size: 0.5rem;
+        margin-bottom: 0;
+        padding-top: 30px;
+        margin-top: 50px;
+        padding:10px;
+        color: azure;
+    }
+}
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    width: 100%;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: azure;
+    text-align: center;
+    font-size: 13px;
+    position: relative;
+    margin-top:-40px;
+    padding-top:20px;
+  
+    /* IMPORTANTE: tira o FIXO */
+}
+
+body.background-sobre-contato::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* quanto maior o valor, mais escuro */
+    z-index: -1;
+}
